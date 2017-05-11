@@ -3,8 +3,13 @@
  */
 public class Tester {
     public static void main(String[] args) {
-        CsvReader data = new CsvReader("iris-training.csv");
-        data.loadData();
-        data.printData();
+        CsvReader trainingData = new CsvReader("iris-training.csv");
+        trainingData.loadData();
+        trainingData.printData();
+
+        System.out.println("\n___________________________________________________");
+        CsvReader testingData = new CsvReader("iris-testing.csv");
+        testingData.loadData();
+        testingData.printData();
     }
 }
