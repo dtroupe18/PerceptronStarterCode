@@ -28,5 +28,10 @@ public class Perceptron {
 
     }
 
+    private double dotProduct() {
+        // you might want to write this method
+        return  0.0;
+    }
+
 
 }
