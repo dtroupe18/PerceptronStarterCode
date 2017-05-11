@@ -3,7 +3,7 @@
  */
 public class Perceptron {
 
-    double[] weights = new double[4];
+    double[] weights = new double[4]; // weights are initialized to 0
     double[][] data;
     double learningRate;
     int iterations;
