@@ -3,8 +3,7 @@
  */
 public class Perceptron {
 
-    // first element of the weights should be the learning rate
-    double[] weights = new double[5]; // weights are initialized to 0
+    double[] weights = new double[4]; // weights are initialized to 0
     double[][] data;
     double learningRate;
     int iterations;

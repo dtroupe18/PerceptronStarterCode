@@ -6,16 +6,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CsvReader {
+public class DataSetup {
 
-    private String filePath;
-    private double[][] data;
 
-    CsvReader(String filePath) {
-        this.filePath = filePath;
-    }
-
-    private int[] getNumberOfRowsAndColumns() {
+    private static int[] getNumberOfRowsAndColumns(String filePath) {
 
         int[] returnValues = new int[2];
         int numberOfRows = 0;
@@ -39,7 +33,7 @@ public class CsvReader {
         return returnValues;
     }
 
-    private double[] convertStringArrayToDoubleArray(String[] a) {
+    private static double[] convertStringArrayToDoubleArray(String[] a) {
         double[] d = new double[a.length];
         for (int i = 0; i < a.length; i++) {
             double currentValue = Double.parseDouble(a[i]);
@@ -48,20 +42,21 @@ public class CsvReader {
         return d;
     }
 
-    private void addRowToData(double[] d, int rowNumber) {
+    private static double[][] addRowToData(double[] d, int rowNumber, double[][] data) {
         for (int i = 0; i < d.length; i++) {
             data[rowNumber][i] = d[i];
         }
+        return data;
     }
 
-    public void loadData() {
-        int[] rowsAndColumns = getNumberOfRowsAndColumns();
+    public static double[][] loadData(String filePath) {
+        int[] rowsAndColumns = getNumberOfRowsAndColumns(filePath);
         int numberOfRows = rowsAndColumns[0];
         int numberOfColumns = rowsAndColumns[1];
         String line;
         int currentRow = 0;
 
-        data = new double[numberOfRows][numberOfColumns];
+        double data[][] = new double[numberOfRows][numberOfColumns];
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
@@ -79,15 +74,17 @@ public class CsvReader {
                 }
 
                 double[] rowAsDoubles = convertStringArrayToDoubleArray(rowOfData);
-                addRowToData(rowAsDoubles, currentRow);
+                addRowToData(rowAsDoubles, currentRow, data);
                 currentRow++;
             }
         } catch (IOException ioe) {
             System.out.println(ioe.getLocalizedMessage());
         }
+
+        return data;
     }
 
-    public void printData() {
+    public static void printData(double[][] data) {
         for (int i = 0; i < data.length; i++) {
             System.out.println();
             System.out.print("[ ");
