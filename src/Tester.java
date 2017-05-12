@@ -6,10 +6,8 @@ public class Tester {
         double[][] trainingData = DataSetup.loadData("iris-training.csv");
         DataSetup.printData(trainingData);
 
-
         System.out.println("\n___________________________________________________");
         double[][] testingData = DataSetup.loadData("iris-testing.csv");
         DataSetup.printData(testingData);
-
     }
 }

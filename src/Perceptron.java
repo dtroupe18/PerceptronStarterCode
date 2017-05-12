@@ -4,17 +4,19 @@
 public class Perceptron {
 
     double[] weights = new double[4]; // weights are initialized to 0
-    double[][] data;
+    double[][] trainData;
+    double[][] testData;
     double learningRate;
     int iterations;
 
-    Perceptron(double learningRate, int iterations, double[][] data) {
+    Perceptron(double learningRate, int iterations, double[][] trainData, double[][] testData) {
         this.learningRate = learningRate;
         this.iterations = iterations;
-        this.data = data;
+        this.trainData = trainData;
+        this.testData = testData;
     }
 
-    /* Your Perceptron should be an object with methods to train and predict */
+    /* Your Perceptron should be an object with methods to train, predict, etc */
 
     public void train() {
 
@@ -24,13 +26,21 @@ public class Perceptron {
 
     }
 
-    public void calculateAccuracy() {
+    public void calculateAccuracy(int correct) {
 
     }
 
-    private double dotProduct() {
+    private void decreaseWeightVector(double[] dataPoint) {
+
+    }
+
+    private void increaseWeightVector(double[] dataPoint) {
+
+    }
+
+    private double dotProduct(double[] dataPoint) {
         // you might want to write this method
-        return  0.0;
+        return 0;
     }
 
 
